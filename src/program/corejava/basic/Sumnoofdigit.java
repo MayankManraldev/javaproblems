@@ -1,4 +1,4 @@
-package program.corejava;
+package program.corejava.basic;
 
 public class Sumnoofdigit {
     public static void main(String[] args) {

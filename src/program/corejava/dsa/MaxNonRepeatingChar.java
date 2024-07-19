@@ -1,4 +1,4 @@
-package program.corejava;
+package program.corejava.dsa;
 
 
 public class MaxNonRepeatingChar {

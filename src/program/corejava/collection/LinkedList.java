@@ -1,4 +1,4 @@
-package program.corejava;
+package program.corejava.collection;
 
 public class LinkedList {
 

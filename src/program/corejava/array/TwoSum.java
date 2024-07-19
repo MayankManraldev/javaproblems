@@ -1,13 +1,14 @@
-package program.corejava;
+package program.corejava.array;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ArraysProgram {
+public class TwoSum {
     public static void main(String[] args) {
         int arr[] = {12, 34, 5, 45, 67, 78, 78, 55};
-        System.out.println(Arrays.toString(twoSum(arr, 112)));
+        int sum=17;
+        System.out.println(Arrays.toString(twoSum2(arr, 112)));
     }
 
     public static int[] twoSum(int[] nums, int target) {
@@ -22,17 +23,17 @@ public class ArraysProgram {
         return null;
     }
 
-    private static int[] closestSum(int[] arr) {
+    private static int[] twoSum2(int[] arr,int sum) {
         Arrays.sort(arr);
         int l=0,r= arr.length-1;
         while(l<r){
-            int sum=arr[l]+arr[r];
-            if(sum<0){
-                l++;
-            } else if (sum>0) {
-                r--;
-            }else
+            if(arr[l]+arr[r]==sum){
                 return new int[] {arr[l],arr[r]};
+            } else if (arr[l]+arr[r]>sum) {
+                r--;
+            }else{
+                l++;
+            }
         }
         return null;
     }
