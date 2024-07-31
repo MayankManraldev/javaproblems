@@ -1,4 +1,4 @@
-package test;
+package program.corejava.multithreading;
 
 public class WaitNotifyExample {
 
@@ -17,6 +17,7 @@ public class WaitNotifyExample {
             }
         });
 
+
         Thread consumer = new Thread(() -> {
             synchronized (lock) {
                 System.out.println("Consumer thread is running...");
@@ -24,9 +25,6 @@ public class WaitNotifyExample {
                 System.out.println("Consumer thread is resumed...");
             }
         });
-
-        Runnable runnable = () ->System.out.println("dnfjdf");
-
         producer.start();
         consumer.start();
     }

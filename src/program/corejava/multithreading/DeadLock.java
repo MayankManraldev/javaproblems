@@ -1,4 +1,4 @@
-package test.multithreading;
+package program.corejava.multithreading;
 
 public class DeadLock {
 

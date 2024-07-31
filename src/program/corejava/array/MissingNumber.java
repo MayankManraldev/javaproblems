@@ -1,4 +1,4 @@
-package test;
+package program.corejava.array;
 
 
 public class MissingNumber {
