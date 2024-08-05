@@ -10,6 +10,7 @@ public class StreamsPrograms {
         List<String> collected = Arrays.stream(arr).mapToObj(n -> n + "").filter(a -> a.startsWith("1")).collect(Collectors.toList());
         System.out.println("get List of number start with A" + collected);
 
+
         List<String> lst = Arrays.asList("Mayank", "Garisha", "jsd");
         String s = lst.stream().max(Comparator.comparing(o -> o.length()))
                 .get();
@@ -39,7 +40,15 @@ public class StreamsPrograms {
                         )
                 );
         System.out.println("Count occurrence of each word" + result);
+        List<Integer> list = Arrays.asList(1, 2, 3, 3, 4, 2, 1, 4, 5);
+        System.out.println("single value in list "+lonelyInteger(list));
+    }
 
+    public static int lonelyInteger(List<Integer> a) {
+        return a.stream()
+                .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+                .entrySet().stream()
+                .filter(map->map.getValue()==1).map(b->b.getKey()).findFirst().get();
 
     }
 }
