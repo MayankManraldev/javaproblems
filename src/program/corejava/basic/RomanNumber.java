@@ -36,7 +36,7 @@ public class RomanNumber {
      /*   for (int i = 1; i<= 100; i++) {
             System.out.println(i+"\t =\t "+RomanNumber.toRoman(i));
         }*/
-        System.out.println(RomanNumber.toRoman(34));
+        System.out.println(RomanNumber.toRoman(39));
     }
 
 }
