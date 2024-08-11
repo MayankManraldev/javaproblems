@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 public class StreamsPrograms {
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 3, 4, 5, 6, 6, 7, 7, 9, 8};
+        int[] arr = {1, 2, 3, 3, 14, 5, 16, 6, 7, 7, 9, 8};
         List<String> collected = Arrays.stream(arr).mapToObj(n -> n + "").filter(a -> a.startsWith("1")).collect(Collectors.toList());
         System.out.println("get List of number start with A" + collected);
 
@@ -18,16 +18,10 @@ public class StreamsPrograms {
         System.out.println("Highest Length String is " + s);
 
         String str = "mayankmanral";
-        String s1 = Arrays.stream(str.toLowerCase().split("")).collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
-                .entrySet().stream()
-                .filter(entry -> entry.getValue() == 1L)
-                .map(entry -> entry.getKey())
-                .findFirst().get();
-        System.out.println("fisrt nonrepeating character is " + s1);
+        System.out.println("first nonrepeating character is " + firstNonRepeatingChar(str));
 
-        List collect = Arrays.stream(arr).boxed().filter(value -> value % 2 == 0)
-                .peek(System.out::println).collect(Collectors.toList());
-        System.out.println(collect);
+        List collect = Arrays.stream(arr).boxed().filter(value -> value % 2 == 0).collect(Collectors.toList());
+        System.out.println("List of Even No Present in Arrays "+collect);
 
         List<String> items =
                 Arrays.asList("apple", "apple", "banana",
@@ -40,8 +34,18 @@ public class StreamsPrograms {
                         )
                 );
         System.out.println("Count occurrence of each word" + result);
+
         List<Integer> list = Arrays.asList(1, 2, 3, 3, 4, 2, 1, 4, 5);
         System.out.println("single value in list "+lonelyInteger(list));
+    }
+
+    private static String firstNonRepeatingChar(String str) {
+        return Arrays.stream(str.toLowerCase().split("")).collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                .entrySet().stream()
+                .filter(entry -> entry.getValue() == 1L)
+                .map(entry -> entry.getKey())
+                .findFirst().get();
+
     }
 
     public static int lonelyInteger(List<Integer> a) {
