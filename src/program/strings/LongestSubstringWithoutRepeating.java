@@ -1,4 +1,4 @@
-package program.java8stream;
+package program.strings;
 
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -25,11 +25,12 @@ public class LongestSubstringWithoutRepeating {
                     }
                 });
 
+
         return s.substring(maxStart.get(), maxStart.get() + maxLength.get());
     }
 
     public static void main(String[] args) {
-        String s = "dfjndkjmllmwjkebk";
-        System.out.println(longestSubstringWithoutRepeating(s));
+        String s = "jdjflzloiuytrellsndlnns";
+        System.out.println(longestSubstringWithoutRepeating(s));  // Output: "zloiuytre"
     }
 }
