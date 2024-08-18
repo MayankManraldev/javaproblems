@@ -18,7 +18,7 @@ public class StreamsPrograms {
         System.out.println("Highest Length String is " + s);
 
         String str = "mayankmanral";
-        System.out.println("first nonrepeating character is " + firstNonRepeatingChar(str));
+        System.out.println("first non repeating character is " + firstNonRepeatingChar(str));
 
         List collect = Arrays.stream(arr).boxed().filter(value -> value % 2 == 0).collect(Collectors.toList());
         System.out.println("List of Even No Present in Arrays "+collect);
@@ -37,16 +37,24 @@ public class StreamsPrograms {
 
         List<Integer> list = Arrays.asList(1, 2, 3, 3, 4, 2, 1, 4, 5);
         System.out.println("single value in list "+lonelyInteger(list));
+
+        System.out.println("Sum of all Even Number are "+sumOfAllEvenNo.apply(list));
     }
 
     private static String firstNonRepeatingChar(String str) {
-        return Arrays.stream(str.toLowerCase().split("")).collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
-                .entrySet().stream()
-                .filter(entry -> entry.getValue() == 1L)
-                .map(entry -> entry.getKey())
-                .findFirst().get();
+        return Arrays.stream(str.toLowerCase().split("")).
+                collect(Collectors.groupingBy(Function.identity(), LinkedHashMap::new, Collectors.counting()))
+                    .entrySet().stream()
+                    .filter(entry -> entry.getValue() == 1L)
+                    .map(entry -> entry.getKey())
+                    .findFirst().get();
 
     }
+
+    static Function<List<Integer>,Integer> sumOfAllEvenNo=
+            lst->lst.stream()
+                    .filter(a->a%2==0)
+                    .collect(Collectors.summingInt(Integer::intValue));
 
     public static int lonelyInteger(List<Integer> a) {
         return a.stream()
