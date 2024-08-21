@@ -32,7 +32,15 @@ class MinMax {
     public static void main(String[] args) throws IOException {
         List<Integer> arr = Arrays.asList(1, 34, 2, 3, 43, 4, 5, 6, 7, 8, 9, 10);
         MinMax.miniMaxSum(arr, 4);
-        MinMax.miniMaxSumUsingStream(arr, 4);
+        MinMax.miniMaxSumUsingStream(arr,4);
+        MinMax.miniMaxUsingStream(arr, 4);
 
     }
+    public static void miniMaxUsingStream(List<Integer> arr, int n) {
+        int max = arr.stream().sorted(Comparator.reverseOrder()).skip(n-1).mapToInt(Integer::intValue).findFirst().getAsInt();
+        int min = arr.stream().sorted().skip(n-1).mapToInt(Integer::intValue).findFirst().getAsInt();
+        System.out.println(n + "th largest value is "+ max+"and" + n + "th smallest values is " + min);
+
+    }
+
 }
