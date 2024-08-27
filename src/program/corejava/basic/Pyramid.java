@@ -1,3 +1,5 @@
+package program.corejava.basic;
+
 public class Pyramid {
 
     /*        *

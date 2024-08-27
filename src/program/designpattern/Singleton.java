@@ -5,13 +5,15 @@ import java.io.Serializable;
 public class Singleton implements Cloneable, Serializable {
     private static  Singleton instance=null;
     private Singleton(){
-
         System.out.println("Inside Singleton contructor");
         if(instance!=null)
             throw new IllegalArgumentException();
     }
 
-    protected Object readResolve() { return instance; }
+    protected Object readResolve() {
+        return instance;
+    }
+
     public static Singleton getInstance(){
         if (instance == null)
         synchronized (Singleton.class){
@@ -22,8 +24,8 @@ public class Singleton implements Cloneable, Serializable {
     }
 
     @Override
-    public Singleton clone() {
-        return instance;
+    public Singleton clone() throws CloneNotSupportedException {
+         throw new CloneNotSupportedException();
     }
 
 
