@@ -2,6 +2,7 @@ package program.corejava.collection;
 
 import java.util.Queue;
 import java.util.LinkedList;
+import java.util.Stack;
 
 // Node class representing each node in the binary tree
 class Node {
@@ -138,6 +139,28 @@ public class BinaryTree {
         if (node == null) return 0;
         return 1 + getSize(node.left) + getSize(node.right);
     }
+    public static int sumOfLeafNodes(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return root.key; // Leaf node
+        }
+        return sumOfLeafNodes(root.left) + sumOfLeafNodes(root.right);
+    }
+    public static void printLeafNodes(Node root) {
+        if (root == null) return;
+        Stack<Node> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            Node curr = stack.pop();
+            if (curr.left == null && curr.right == null) {
+                System.out.print(curr.key + " ");
+            }
+            if (curr.right != null) stack.push(curr.right);
+            if (curr.left != null) stack.push(curr.left);
+        }
+    }
 
 
     public static void main(String[] args) {
@@ -170,11 +193,20 @@ public class BinaryTree {
 
         System.out.println("\nLevel-Order Traversal:");
         levelOrderTraversal(tree.root); // Output: 1 2 3 4 5
+
         System.out.println();
-        System.out.println("Level Order Traversal stored in array:");
+        System.out.println("Level Order Traversal and stored in array:");
         int[] traversalResult = tree.levelOrderTraversalArray(tree.root);
         for (int value : traversalResult) {
             System.out.print(value + " "); // Output: 1 2 3 4 5
         }
+        System.out.println();
+
+        System.out.println("Print all leaf nodes : ");
+        printLeafNodes(tree.root);
+
+        System.out.println();
+        System.out.println("Sum of all leaf nodes are :"+sumOfLeafNodes(tree.root));
+
     }
 }
