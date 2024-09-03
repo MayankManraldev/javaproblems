@@ -1,22 +1,25 @@
 package program.corejava.multithreading;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.function.IntPredicate;
 import java.util.stream.IntStream;
 
-public class CompletableFuture {
+public class CompletableFutureExamples {
     private static Object object = new Object();
 
     private static IntPredicate evenPredicate = a -> a % 2 == 0;
     private static IntPredicate oddPredicate = a -> a % 2 != 0;
 
     public static void main(String[] args) throws InterruptedException {
-        java.util.concurrent.CompletableFuture.runAsync(() -> printNo(evenPredicate));
-        java.util.concurrent.CompletableFuture.runAsync(() -> printNo(oddPredicate));
+        CompletableFuture.runAsync(() -> printNo(evenPredicate));
+        CompletableFuture.runAsync(() -> printNo(oddPredicate));
         Thread.sleep(1000);
     }
 
+
+
     public static void printNo(IntPredicate cond) {
-        IntStream.rangeClosed(1, 10).filter(cond).forEach(CompletableFuture::execute);
+        IntStream.rangeClosed(1, 10).filter(cond).forEach(CompletableFutureExamples::execute);
     }
 
     private static void execute(int no) {
