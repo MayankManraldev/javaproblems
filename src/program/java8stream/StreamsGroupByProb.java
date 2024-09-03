@@ -58,8 +58,12 @@ class StreamsGroupByProb {
         List<Employee> l1 = employeeList.stream().sorted((Comparator.comparingDouble(Employee::getSalary).reversed())).collect(Collectors.toList());
         System.out.println("List sorted based on salary descending------->" + l1);
 
-        Employee employee = employeeList.stream().sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).distinct().skip(1).findFirst().get();
-        System.out.println("Second highest salary employee is "+ employee);
+         employeeList.stream().sorted(Comparator.comparingDouble(Employee::getSalary).reversed()).distinct().skip(1).findFirst()
+                 .ifPresentOrElse(
+                         (value) -> { System.out.println("Value is present, its: " + value);},
+                         () ->{ System.out.println("Value is empty");}
+                          );
+        // System.out.println("Second highest salary employee is "+ employee);
 
     }
 }

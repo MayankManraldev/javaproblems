@@ -58,7 +58,7 @@ public class StreamsPrograms {
 
     public static int lonelyInteger(List<Integer> a) {
         return a.stream()
-                .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+                .collect(Collectors.groupingBy(Function.identity(),LinkedHashMap::new,Collectors.counting()))
                 .entrySet().stream()
                 .filter(map->map.getValue()==1).map(b->b.getKey()).findFirst().get();
 
